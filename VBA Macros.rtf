@@ -1,0 +1,112 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww20220\viewh8820\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 VBA Macros for future reference:\
+\
+\
+Sub MacroCheck()\
+\
+    Dim testMessage As String\
+\
+    testMessage = "Hell0 World!"\
+\
+    MsgBox (testMessage)\
+\
+End Sub\
+\
+\
+Sub DQAnalysis()\
+\
+    Worksheets("DQ Analysis").Activate\
+\
+    Range("A1").Value = "DAQ0 (Ticker: DQ)"\
+    \
+    'Creating a header row with the next 3 lines\
+    \
+    Cells(3, 1).Value = "Year"\
+    Cells(3, 2).Value = "Total Daily Volume"\
+    Cells(3, 3).Value = "Return"\
+\
+End Sub\
+\
+\
+#this is a for loop that makes a message box pop up with a 1, then a 2, then a 3\
+Sub DQAnalysis()\
+    \
+    For i = 1 To 3\
+        MsgBox (i)\
+    Next i\
+    \
+End Sub\
+\
+#this is a for loop that will have a message box pop up with each of the column headers from the 2018 worksheet\
+Sub DQAnalysis()\
+\
+    Worksheets("2018").Activate\
+    \
+    For i = 1 To 8\
+        MsgBox (Cells(1, i))\
+    Next i\
+    \
+End Sub\
+\
+\
+#this is a for loop that will add numbers in the first row for 10 numbers and it will square each so in column 3, the value is 3 and 3 squared is 9\
+Sub HelloAnalysis()\
+\
+Worksheets("Hello").Activate\
+    For i = 1 To 10\
+    \
+        Cells(1, i).Value = i * i\
+    Next i\
+\
+\
+End Sub\
+\
+\
+\
+#good for loop and using if/then statement to get only the ticker we want \
+Sub DQAnalysis()\
+\
+\
+    Worksheets("DQ Analysis").Activate\
+\
+    Range("A1").Value = "DAQ0 (Ticker: DQ)"\
+    \
+    'Creating a header row with the next 3 lines in row 3, columns A-C\
+    \
+    Cells(3, 1).Value = "Year"\
+    Cells(3, 2).Value = "Total Daily Volume"\
+    Cells(3, 3).Value = "Return"\
+    \
+\
+\
+    rowStart = 2\
+    rowEnd = 3013\
+    totalVolume = 0\
+\
+\
+    Worksheets("2018").Activate\
+    \
+For i = rowStart To rowEnd\
+\
+    If Cells(i, 1).Value = "DQ" Then\
+\
+        totalVolume = totalVolume + Cells(i, 8).Value\
+        \
+    End If\
+    \
+Next i\
+    \
+    Worksheets("DQ Analysis").Activate\
+    Cells(4, 1).Value = 2018\
+    Cells(4, 2).Value = totalVolume\
+    \
+End Sub\
+\
+\
+}
