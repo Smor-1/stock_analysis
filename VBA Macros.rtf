@@ -147,5 +147,51 @@ If Cells(i + 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then\
     \
 Next i\
 \
+#this is some useful code to statically and conditionally format cells \
+Sub formatAllStocksAnalysisTable()\
+\
+'activating worksheet\
+Worksheets("All Stocks Analysis").Activate\
+\
+'formatting the headers to be bolded\
+Range("A3:C3").Font.Bold = True\
+\
+'adding a border to the bottom edge\
+Range("A3:C3").Borders(xlEdgeBottom).LineStyle = xlContinuous\
+\
+'Makes the font size huge!!\
+Range("A3:C3").Font.Size = 50\
+\
+'Changes the numbers to have 2sig figs and a number sign and the % has 2 sig figs\
+Range("B4:B15").NumberFormat = "$#,##0.00"\
+Range("C4:C15").NumberFormat = "0.00%"\
+\
+'Changes column width\
+Columns("B").AutoFit\
+\
+'this will conditionally format 1 cell, so lets try a loop to do all of them\
+If Cells(4, 3) > 0 Then\
+Cells(4, 3).Interior.Color = vbGreen\
+ElseIf Cells(4, 3) < 0 Then\
+Cells(4, 3).Interior.Color = vbRed\
+End If\
+\
+'makes the positive returns green and negative red and if neither then it clears the cell colour\
+dataRowStart = 4\
+dataRowEnd = 15\
+\
+For i = dataRowStart To dataRowEnd\
+\
+If Cells(i, 3) > 0 Then\
+Cells(i, 3).Interior.Color = vbGreen\
+ElseIf Cells(i, 3) < 0 Then\
+Cells(i, 3).Interior.Color = vbRed\
+Else: Cells(i, 3).Interior.Color = xlNone\
+\
+End If\
+\
+Next i\
+\
+End Sub\
 \
 }
