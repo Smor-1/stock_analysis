@@ -109,4 +109,43 @@ Next i\
 End Sub\
 \
 \
+#this is a way to count the number of rows in a workbook!!!! \
+Sub Testing_No_Rows()\
+\
+Worksheets("2018").Activate\
+\
+Dim No_Rows As Integer\
+\
+##important line \
+No_Rows = Range("A1").End(xlDown).Row\
+\
+MsgBox (No_Rows)\
+\
+End Sub\
+\
+\
+#this is a useful code block that will check if the value in a row is unequal to the one before or after and if so will execute <> as the comparison operator \
+For i = rowStart To rowEnd\
+\
+    If Cells(i, 1).Value = "DQ" Then\
+\
+        totalVolume = totalVolume + Cells(i, 8).Value\
+        \
+    End If\
+    \
+If Cells(i - 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then\
+\
+    startingPrice = Cells(i, 6).Value\
+    \
+    End If\
+    \
+If Cells(i + 1, 1).Value <> "DQ" And Cells(i, 1).Value = "DQ" Then\
+\
+    endingPrice = Cells(i, 6).Value\
+    \
+    End If\
+    \
+Next i\
+\
+\
 }
