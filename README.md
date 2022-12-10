@@ -36,7 +36,7 @@ This is the unrefactored code:
 
 ![Image](Code_unrefactored.png)
 
-THis is the refactored code: 
+This is the refactored code: 
 
 ![Image](Code_refactored.png)
 
